@@ -4,7 +4,73 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+    <h1 class="display-4">Property Management System</h1>
+    <p class="lead">Manage properties, agents, tenants, and payments efficiently</p>
+    
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                <a asp-page="/Admin/Dashboard" class="btn btn-primary btn-lg">Go to Admin Dashboard</a>
+            </p>
+        }
+        else if (User.IsInRole("Agent"))
+        {
+            <p>
+                <a asp-page="/Agent/Dashboard" class="btn btn-primary btn-lg">Go to Agent Dashboard</a>
+            </p>
+        }
+        else if (User.IsInRole("Tenant"))
+        {
+            <p>
+                <a asp-page="/Tenant/Dashboard" class="btn btn-primary btn-lg">Go to Tenant Dashboard</a>
+            </p>
+        }
+    }
+    else
+    {
+        <p>
+            <a asp-page="/Account/Login" class="btn btn-primary btn-lg">Login</a>
+        </p>
+        
+        <div class="mt-5">
+            <h3>Default Credentials for Testing</h3>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Admin Account</h5>
+                            <p class="card-text">
+                                <strong>Email:</strong> admin@pms.com<br />
+                                <strong>Password:</strong> Admin@123
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Agent Account</h5>
+                            <p class="card-text">
+                                <strong>Email:</strong> agent@pms.com<br />
+                                <strong>Password:</strong> Agent@123
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tenant Account</h5>
+                            <p class="card-text">
+                                <em>To be created by Admin/Agent</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>

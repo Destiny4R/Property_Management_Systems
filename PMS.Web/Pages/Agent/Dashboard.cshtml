@@ -1,0 +1,81 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Agent")]
+@model PMS.Web.Pages.Agent.DashboardModel
+@{
+    ViewData["Title"] = "Agent Dashboard";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Agent Dashboard</h1>
+    <p class="text-muted">Welcome back, @User.Identity?.Name</p>
+    
+    <div class="row mt-4">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">
+                    <h4>@Model.AssignedProperties</h4>
+                    <p>Assigned Properties</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">
+                    <h4>@Model.TotalRooms</h4>
+                    <p>Total Rooms</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-info text-white mb-4">
+                <div class="card-body">
+                    <h4>@Model.ActiveTenants</h4>
+                    <p>Active Tenants</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">
+                    <h4>@Model.OpenIssues</h4>
+                    <p>Open Issues</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Quick Actions</strong>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <a asp-page="/Agent/Properties/Index" class="btn btn-outline-primary w-100">
+                                View Properties
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a asp-page="/Agent/Tenants/Index" class="btn btn-outline-info w-100">
+                                Manage Tenants
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a asp-page="/Agent/Payments/Record" class="btn btn-outline-success w-100">
+                                Record Payment
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a asp-page="/Agent/Issues/Index" class="btn btn-outline-warning w-100">
+                                View Issues
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
