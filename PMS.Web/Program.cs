@@ -7,11 +7,21 @@ using PMS.Utilities;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? "Server=localhost;Database=PropertyManagement;User=root;Password=password;";
+var useInMemoryDatabase = builder.Configuration.GetValue<bool>("UseInMemoryDatabase", true);
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+if (useInMemoryDatabase)
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseInMemoryDatabase("PropertyManagement"));
+}
+else
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? "Server=localhost;Database=PropertyManagement;User=root;Password=password;";
+
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+}
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
