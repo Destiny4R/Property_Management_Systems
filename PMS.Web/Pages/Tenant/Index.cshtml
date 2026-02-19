@@ -1,0 +1,124 @@
+@page
+@model PMS.Web.Pages.Tenant.IndexModel
+@{
+    ViewData["Title"] = "Tenant Dashboard";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Tenant Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <a asp-page="/Account/Logout" class="btn btn-sm btn-outline-secondary">Logout</a>
+        </div>
+    </div>
+
+    <!-- My Rentals -->
+    <div class="row mb-4">
+        @foreach (var rental in Model.MyRentals)
+        {
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>@rental.Room.Property.Name - Room @rental.Room.RoomNumber</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Address:</strong> @rental.Room.Property.Address</p>
+                        <p><strong>Rent Amount:</strong> ₦@(rental.RentAmountOverride ?? rental.Room.RentAmount).ToString("N2")</p>
+                        <p><strong>Lease Start:</strong> @rental.LeaseStartDate.ToShortDateString()</p>
+                        <p><strong>Lease End:</strong> @rental.LeaseEndDate.ToShortDateString()</p>
+                        
+                        @{
+                            var daysUntilExpiry = (rental.LeaseEndDate - DateTime.Today).Days;
+                            var nextPaymentDue = rental.LeaseStartDate.AddMonths(
+                                (int)Math.Ceiling((DateTime.Today - rental.LeaseStartDate).TotalDays / 30)
+                            );
+                        }
+                        
+                        @if (daysUntilExpiry < 30)
+                        {
+                            <div class="alert alert-warning">
+                                <strong>Notice:</strong> Lease expires in @daysUntilExpiry days
+                            </div>
+                        }
+                        
+                        <a href="#" class="btn btn-primary">Make Payment</a>
+                        <a href="#" class="btn btn-outline-secondary">Report Issue</a>
+                    </div>
+                </div>
+            </div>
+        }
+        
+        @if (!Model.MyRentals.Any())
+        {
+            <div class="col-12">
+                <div class="alert alert-info">
+                    You currently have no active rentals.
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Payment Summary -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Payment Summary</h5>
+                    <h2 class="text-success">Total Paid: ₦@Model.TotalPaid.ToString("N2")</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Payments -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Payment History</h5>
+        </div>
+        <div class="card-body">
+            @if (Model.RecentPayments.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Property</th>
+                                <th>Room</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var payment in Model.RecentPayments)
+                            {
+                                <tr>
+                                    <td>@payment.PaymentDate.ToShortDateString()</td>
+                                    <td>@payment.Room.Property.Name</td>
+                                    <td>@payment.Room.RoomNumber</td>
+                                    <td>₦@payment.Amount.ToString("N2")</td>
+                                    <td>
+                                        <span class="badge bg-@(payment.Status == PaymentStatus.Completed ? "success" : payment.Status == PaymentStatus.Pending ? "warning" : "danger")">
+                                            @payment.Status
+                                        </span>
+                                    </td>
+                                    <td>
+                                        @if (payment.Status == PaymentStatus.Completed)
+                                        {
+                                            <a href="#" class="btn btn-sm btn-outline-primary">Download Receipt</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p class="text-muted">No payment history available.</p>
+            }
+        </div>
+    </div>
+</div>
