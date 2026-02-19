@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PMS.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92c9e39e496b407b9a5ac5a4d38e7659ff973f91")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2d5ba78cf67d652a884f46ce9094a03b148e865")]
 [assembly: System.Reflection.AssemblyProductAttribute("PMS.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PMS.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
