@@ -1,0 +1,12 @@
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/bin/Debug/net8.0/PMS.Utilities.deps.json
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/bin/Debug/net8.0/PMS.Utilities.dll
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/bin/Debug/net8.0/PMS.Utilities.pdb
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/PMS.Utilities.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/PMS.Utilities.AssemblyInfoInputs.cache
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/PMS.Utilities.AssemblyInfo.cs
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/PMS.Utilities.csproj.CoreCompileInputs.cache
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/PMS.Utilities.sourcelink.json
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/PMS.Utilities.dll
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/refint/PMS.Utilities.dll
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/PMS.Utilities.pdb
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Utilities/obj/Debug/net8.0/ref/PMS.Utilities.dll

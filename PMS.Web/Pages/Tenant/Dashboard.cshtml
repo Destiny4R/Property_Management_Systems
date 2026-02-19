@@ -1,0 +1,91 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Tenant")]
+@model PMS.Web.Pages.Tenant.DashboardModel
+@{
+    ViewData["Title"] = "Tenant Dashboard";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Tenant Dashboard</h1>
+    <p class="text-muted">Welcome back, @User.Identity?.Name</p>
+    
+    @if (Model.CurrentTenant != null)
+    {
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <strong>My Room Details</strong>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Property:</strong> @Model.PropertyName</p>
+                        <p><strong>Room Number:</strong> @Model.RoomNumber</p>
+                        <p><strong>Rent Amount:</strong> @Model.RentAmount.ToString("C")</p>
+                        <p><strong>Lease Start:</strong> @Model.CurrentTenant.LeaseStartDate.ToString("MMM dd, yyyy")</p>
+                        <p><strong>Lease End:</strong> @Model.CurrentTenant.LeaseEndDate.ToString("MMM dd, yyyy")</p>
+                        <p><strong>Status:</strong> 
+                            @if (Model.CurrentTenant.Status == PMS.Models.Models.TenantStatus.Active)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">@Model.CurrentTenant.Status</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-warning text-white">
+                        <strong>Payment Information</strong>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Next Payment Due:</strong> @Model.NextPaymentDue.ToString("MMM dd, yyyy")</p>
+                        <p><strong>Total Payments Made:</strong> @Model.TotalPayments</p>
+                        <p><strong>Last Payment:</strong> @(Model.LastPaymentDate?.ToString("MMM dd, yyyy") ?? "No payments yet")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Quick Actions</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <a asp-page="/Tenant/Payments/Make" class="btn btn-success w-100">
+                                    Make Payment
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <a asp-page="/Tenant/Payments/History" class="btn btn-outline-primary w-100">
+                                    Payment History
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <a asp-page="/Tenant/Issues/Report" class="btn btn-outline-warning w-100">
+                                    Report Issue
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info mt-4" role="alert">
+            <h4 class="alert-heading">No Room Assigned</h4>
+            <p>You are not currently assigned to any room. Please contact your property agent for assistance.</p>
+        </div>
+    }
+</div>

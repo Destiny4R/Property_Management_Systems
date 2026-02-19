@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PMS.DataAccess/PMS.DataAccess.csproj" />
+  <Project Path="PMS.Models/PMS.Models.csproj" />
+  <Project Path="PMS.Utilities/PMS.Utilities.csproj" />
+  <Project Path="PMS.Web/PMS.Web.csproj" />
+</Solution>

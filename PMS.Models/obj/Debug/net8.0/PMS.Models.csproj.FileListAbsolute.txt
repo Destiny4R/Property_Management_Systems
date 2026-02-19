@@ -1,0 +1,13 @@
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.AssemblyInfoInputs.cache
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.AssemblyInfo.cs
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.csproj.CoreCompileInputs.cache
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.sourcelink.json
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/bin/Debug/net8.0/PMS.Models.deps.json
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/bin/Debug/net8.0/PMS.Models.dll
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/bin/Debug/net8.0/PMS.Models.pdb
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.csproj.AssemblyReference.cache
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.dll
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/refint/PMS.Models.dll
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/PMS.Models.pdb
+/home/runner/work/Property_Management_Systems/Property_Management_Systems/PMS.Models/obj/Debug/net8.0/ref/PMS.Models.dll
